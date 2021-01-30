@@ -4,7 +4,9 @@
   "description": "A simple URL shortener.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/server.ts",
+    "start": "node dist/server.js",
+    "build": "tsc -p ."
   },
   "author": "Maciek Sitkowski",
   "license": "MIT",
