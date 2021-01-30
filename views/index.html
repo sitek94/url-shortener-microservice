@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap" rel="stylesheet">
+  <title>URL Shortener Microservice</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>
+        <span class="timestamp">Timestamp</span>
+        <span class="microservice">Microservice</span>
+      </h1>
+    </header>
+
+    <hr />
+
+    <main>
+      <h2>Example Usage</h2>
+      <hr />
+
+      <!-- BASE URL -->
+      <div class="example">
+        Base url: <br />
+        <pre class="request">
+          https://simple-timestamp-service.herokuapp.com
+        </pre>
+      </div>
+
+      <!-- VALID DATE -->
+      <div class="example">
+        <a href="/api/timestamp/2020-12-30">Valid date</a>
+        <pre class="request">
+          GET /api/timestamp/2020-12-30
+        </pre>
+        <pre class="json">
+{
+  "unix": 1609286400000,
+  "utc": "Wed, Dec 30, 2020, 01:00:00 GMT+1"
+}
+        </pre>
+      </div>
+
+      <!-- UNIX TIMESTAMP -->
+      <div class="example">
+        <a href="/api/timestamp/1451001600000">Unix timestamp</a>
+        <pre class="request">
+          GET /api/timestamp/1451001600000
+        </pre>
+        <pre class="json">
+{
+  "unix": 1451001600000,
+  "utc": "Fri, Dec 25, 2015, 01:00:00 GMT+1"
+}
+        </pre>
+      </div>
+
+      <!-- CURRENT TIME -->
+      <div class="example">
+        <a href="/api/timestamp">Empty parameter &rarr; current time</a>
+        <pre class="request">
+          GET /api/timestamp
+        </pre>
+        <pre class="json">
+{
+  "unix": 1611947123417,
+  "utc": "Fri, Jan 29, 2021, 20:05:23 GMT+1"
+}
+        </pre>
+      </div>
+
+      <!-- INVALID DATE -->
+      <div class="example">
+        <a href="/api/timestamp/hello-guys">Invalid date</a>
+        <pre class="request">
+          GET /api/timestamp/hello-guys
+        </pre>
+        <pre class="json">
+{
+  "error": "Invalid Date"
+}
+        </pre>
+      </div>
+    </main>
+
+    <footer>
+      by <a href="https://github.com/sitek94">Maciek Sitkowski</a> 2021
+    </footer>
+  </div>
+</body>
+
+</html>
