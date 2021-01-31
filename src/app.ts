@@ -2,14 +2,17 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import mongoose from 'mongoose';
-import config from '../config';
+import config from './config';
+
+// Routes
+import shorturlRoute from './routes/api/shorturl';
 
 const app = express();
 
-// CORS
+// Middlewares
 app.use(cors({ optionsSuccessStatus: 200 }));
-
-// Serve static files
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // Construct MongoURI
@@ -29,5 +32,7 @@ mongoose
 app.get('/', (req, res) => {
   res.sendFile(path.resolve('views/index.html'));
 });
+
+app.use('/api/shorturl', shorturlRoute);
 
 export default app;
