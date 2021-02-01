@@ -7,7 +7,12 @@ function verifyUrlMiddleware(
   next: express.NextFunction
 ) {
   try {
-    const { hostname } = new URL(req.body.url);
+    const url = req.body.url;
+    if (url === '') {
+      throw Error('Invalid URL');
+    }
+
+    const { hostname } = new URL(url);
 
     dns.lookup(hostname, (err) => {
       if (err) {
