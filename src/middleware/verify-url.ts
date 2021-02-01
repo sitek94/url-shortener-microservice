@@ -14,7 +14,7 @@ function verifyUrlMiddleware(
     }
 
     // Doesn't start with http(s)::
-    if (!(/^https?::/.test(url))) {
+    if (!(/^https?/.test(url))) {
       throw Error('Invalid URL');
     }
 
