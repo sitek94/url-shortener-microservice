@@ -6,8 +6,10 @@ const router = Router();
 
 router.post('/new', verifyUrl, async (req, res) => {
   try {
+    const url = req.body.url.toLowerCase();
+
     // Check if url is already in the db
-    const item = await Item.findOne({ original_url: req.body.url });
+    const item = await Item.findOne({ original_url: url });
     if (item) {
       return res.json({
         original_url: item.original_url,
@@ -20,7 +22,7 @@ router.post('/new', verifyUrl, async (req, res) => {
     if (!count) throw Error(`Failed to count the docs`);
 
     const urlObj = {
-      original_url: req.body.url,
+      original_url: url,
       short_url: count + 1,
     };
 
