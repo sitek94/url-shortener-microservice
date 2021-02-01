@@ -13,30 +13,29 @@ body {
   background-color: #222;
 
   font-family: 'Roboto', sans-serif;
+  font-size: 16px;
 }
 
 :root {
   --primary-color: cornflowerblue;
+  --primary-color-rgb: 100, 149, 237;
 }
 
 .container {
   max-width: 500px;
 }
 
+/* TITLE */
 h1 .primary {
+  text-transform: uppercase;
   text-align: left;
   font-weight: 300;
-  
 }
 h1 .secondary {
   text-align: right;
-  text-transform: uppercase; 
-  font-size: 0.7em;
-  color: var(--primary-color); 
+  color: var(--primary-color);
 }
 
-
-/* SUBTITLE */
 h2 {
   font-weight: 500;
 }
@@ -56,6 +55,44 @@ footer {
   margin-bottom: 10px;
 }
 
+.divider {
+  margin: 40px 0;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+label {
+  width: 100%;
+  
+}
+
+input[type='text'] {
+  flex: 1;
+  margin-right: 10px;
+  border: 0;
+  color: #fff;
+  background-color: #333;
+  font-size: 16px;
+  padding: 12px 20px;
+}
+
+input[type='submit'] {
+  cursor: pointer;
+  border: 0;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 12px 20px;
+  color: #fff;
+  background-color: var(--primary-color);
+}
+input[type='submit']:hover {
+  background-color: rgba(var(--primary-color-rgb), 0.7);
+}
+
 /* EXAMPLE CONTAINER */
 .example {
   margin-top: 25px;
@@ -69,9 +106,11 @@ pre {
   tab-size: 2;
   width: 100%;
   overflow-x: auto;
-}
-pre.request {
   white-space: inherit;
+}
+pre a:link,
+pre a:visited {
+  color: var(--primary-color);
 }
 
 /* LINK */
