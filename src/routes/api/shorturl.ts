@@ -20,8 +20,8 @@ router.post('/new', verifyUrl, async (req, res) => {
     if (!count) throw Error(`Failed to count the docs`);
 
     const urlObj = {
-      short_url: count,
       original_url: req.body.url,
+      short_url: count + 1,
     };
 
     // Create new item
@@ -40,8 +40,15 @@ router.post('/new', verifyUrl, async (req, res) => {
 
 router.get('/:short_url', async (req, res) => {
   try {
+    const short_url = req.params.short_url;
+
+    // Don't allow strings and zero for short url
+    if (isNaN(+short_url) || short_url === '0') {
+      throw Error('Wrong format');
+    }
+
     // Find item by short url in the database
-    const item = await Item.findOne({ short_url: req.params.short_url });
+    const item = await Item.findOne({ short_url });
     if (!item) throw Error(`No short URL found for the given input`);
 
     // Redirect to the original url
