@@ -17,8 +17,8 @@ body {
 }
 
 :root {
-  --primary-color: cornflowerblue;
-  --primary-color-rgb: 100, 149, 237;
+  --primary-color: #0db959;
+  --primary-color-rgb: 13, 185, 89;
 }
 
 .container {
@@ -83,7 +83,7 @@ input[type='submit'] {
   cursor: pointer;
   border: 0;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 700;
   text-transform: uppercase;
   padding: 12px 20px;
   color: #fff;
