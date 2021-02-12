@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import Item from '../../models/item-model';
+import { Item } from '../../models/item-model';
 import verifyUrl from '../../middleware/verify-url';
 
 const router = Router();
@@ -50,7 +50,7 @@ router.get('/:short_url', async (req, res) => {
     }
 
     // Find item by short url in the database
-    const item = await Item.findOne({ short_url });
+    const item = await Item.findOne({ short_url: +short_url });
     if (!item) throw Error(`No short URL found for the given input`);
 
     // Redirect to the original url
