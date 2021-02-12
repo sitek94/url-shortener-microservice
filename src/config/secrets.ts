@@ -3,20 +3,17 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const ENVIRONMENT = process.env.NODE_ENV;
-const isProduction = ENVIRONMENT === 'production';
+const { NODE_ENV, MONGO_URI_DEV, MONGO_URI_PROD, MONGO_URI_TEST } = process.env;
 
-export const MONGO_URI = isProduction
-  ? (process.env['MONGO_URI'] as string)
-  : (process.env['MONGO_URI_LOCAL'] as string);
+export const MONGO_URI = (NODE_ENV === 'production'
+  ? MONGO_URI_PROD
+  : NODE_ENV === 'development'
+  ? MONGO_URI_DEV
+  : MONGO_URI_TEST) as string;
 
 if (!MONGO_URI) {
-  const env_var = isProduction ? 'MONGO_URI' : 'MONGO_URI_LOCAL';
-
   console.log(
-    chalk.red(
-      `[MongoDB] connection string missing - Set ${env_var} environment variable.`
-    )
+    chalk.red(`[MongoDB] Missing connection string for MongoDB in ${NODE_ENV}`)
   );
 
   process.exit(1);
