@@ -11,57 +11,49 @@
 </head>
 
 <body>
-  <div class="container">
-    <header>
-      <h1>
-        <span class="primary">Url-shortener</span>
-        <span class="secondary">Microservice</span>
-      </h1>
-    </header>
+  <header>
+    <h1>
+      <span>URL</span><span class="primary-color">Shortener</span><wbr><span>Microservice</span>
+    </h1>
+  </header>
 
-    <hr class="divider" />
-
-    <main>
+  <main>
+    <section>
       <h2>Create short URL</h2>
-
+      <pre>
+        <span class="key">POST</span> /api/shorturl/new
+      </pre>
       <form action="api/shorturl/new" method="POST">
-        <input type="text" name="url" placeholder="Enter URL to shorten..." value="https://www.freecodecamp.org" />
-        <input type="submit" value="Shorten" />
+        <div class="form-control">
+          <label for="url">Url to shorten</label>
+          <input id="url" type="text" name="url" placeholder="Enter URL to shorten..."
+            value="https://www.freecodecamp.org" />
+        </div>
+        <button class="btn" type="submit">Shorten</button>
       </form>
+    </section>
 
-      <hr class="divider" />
+    <section>
+      <h2>Use short URL</h2>
+      <pre>
+        <span class="key">GET</span> /api/shorturl/:short_url
+      </pre>
 
-      <h2>Usage</h2>
+      <label for="short-url-example-link">This:</label>
+      <pre>
+        <a id="short-url-example-link" class="link" href="api/shorturl/1">/api/shorturl/1</a>
+      </pre>
+      <label>Will redirect to:</label>
+      <pre>
+        <a class="link" href="https://macieksitkowski.com">https://macieksitkowski.com</a>
+      </pre>
 
-      <!-- BASE URL -->
-      <div class="example">
-        Base url
-        <pre>
-          https://simple-short-url-microservice.herokuapp.com
-        </pre>
-      </div>
-      
-      <!-- BASE URL -->
-      <div class="example">
-        This example link
-        <pre>
-          <a href="/api/shorturl/1">/api/shorturl/1</a>
-        </pre>
-      </div>
+    </section>
+  </main>
 
-      <!-- VALID DATE -->
-      <div class="example">
-        Will redirect to
-        <pre>
-          <a href="https://www.freecodecamp.org">https://www.freecodecamp.org</a>
-        </pre>
-      </div>
-    </main>
-
-    <footer>
-      by <a href="https://github.com/sitek94">Maciek Sitkowski</a> 2021
-    </footer>
-  </div>
+  <footer>
+    <a class="link" href="https://github.com/sitek94">Maciek Sitkowski</a> 2021
+  </footer>
 </body>
 
 </html>
