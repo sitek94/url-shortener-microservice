@@ -33,4 +33,9 @@ app.get('/', (req, res) => {
 // Api routes
 app.use('/api/shorturl', shorturlRoute);
 
+// 404: Not Found
+app.use((req, res) => {
+  res.status(404).sendFile(path.resolve('views/404.html'));
+});
+
 export default app;
