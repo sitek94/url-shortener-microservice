@@ -1,20 +1,17 @@
 import dns from 'dns';
-import express from 'express';
+import { Request, Response, NextFunction } from 'express';
 
-function verifyUrlMiddleware(
-  req: express.Request,
-  res: express.Response,
-  next: express.NextFunction
-) {
+function verifyUrlMiddleware(req: Request, res: Response, next: NextFunction) {
   try {
     const url = req.body.url;
+
     // Empty url
     if (url === '') {
       throw Error('Invalid URL');
     }
 
     // Doesn't start with http(s)::
-    if (!(/^https?/.test(url))) {
+    if (!/^https?/.test(url)) {
       throw Error('Invalid URL');
     }
 
@@ -22,13 +19,13 @@ function verifyUrlMiddleware(
 
     dns.lookup(hostname, (err) => {
       if (err) {
-        console.log(err);
+        throw new Error('Invalid URL');
       }
 
       next();
     });
   } catch (e) {
-    res.json({ error: 'Invalid URL' });
+    res.json({ error: e.message });
   }
 }
 
