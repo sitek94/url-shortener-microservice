@@ -105,7 +105,7 @@ main {
 /* SECTION */
 /* ==================== */
 section {
-  flex: 1 0 50%;
+  width: 400px;
   border: 3px solid var(--primary-color);
   border-radius: var(--border-radius);
   padding: 40px;
@@ -123,6 +123,7 @@ section h2 {
 
 @media (max-width: 550px) {
   section {
+    width: 100%;
     border-left: 0;
     border-right: 0;
     border-radius: 0;
