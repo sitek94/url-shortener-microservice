@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { Item } from '../../models/item-model';
-import verifyUrl from '../../middleware/verify-url';
+import { Item } from '../models/item-model';
+import verifyUrl from '../middleware/verify-url';
 
 const router = Router();
 
