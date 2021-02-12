@@ -9,7 +9,8 @@ import shorturlRoute from './routes/shorturl';
 
 const app = express();
 
-// Middlewares
+// Express configuration
+app.set('port', process.env.PORT || 5000);
 app.use(cors({ optionsSuccessStatus: 200 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -29,6 +30,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.resolve('views/index.html'));
 });
 
+// Api routes
 app.use('/api/shorturl', shorturlRoute);
 
 export default app;
