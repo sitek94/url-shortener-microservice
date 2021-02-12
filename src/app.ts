@@ -2,10 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import mongoose from 'mongoose';
-import config from './config';
+import { MONGO_URI } from './config/secrets';
 
 // Routes
-import shorturlRoute from './routes/api/shorturl';
+import shorturlRoute from './routes/shorturl';
 
 const app = express();
 
@@ -15,18 +15,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// Construct MongoURI
-const { MONGO_URI, MONGO_DB_NAME } = config;
-const mongoUri = `${MONGO_URI}/${MONGO_DB_NAME}`;
-
 // Connect to MongoDB
 mongoose
-  .connect(mongoUri, {
+  .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log(`MongoDB connected...`))
-  .catch((err) => console.log(`MongoDB failed to connect..., ${err}`));
+  .then(() => console.log(`✅ MongoDB connected...`))
+  .catch((err) => console.log(`❌ MongoDB failed to connect..., ${err}`));
 
 // Homepage route
 app.get('/', (req, res) => {
