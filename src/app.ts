@@ -23,7 +23,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log(`✅ MongoDB connected...`))
-  .catch((err) => console.log(`❌ MongoDB failed to connect..., ${err}`));
+  .catch((err) => console.log(`❌ MongoDB failed to connect, ${err.message}`));
 
 // Homepage route
 app.get('/', (req, res) => {
