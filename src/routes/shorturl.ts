@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { Item } from '../models/item-model';
+import { Item, ItemDocument } from '../models/item-model';
 import verifyUrl from '../middleware/verify-url';
 
 const router = Router();
@@ -19,24 +19,24 @@ router.post('/new', verifyUrl, async (req, res) => {
 
     // Count the docs
     const count = await Item.estimatedDocumentCount();
-    if (!count) throw Error(`Failed to count the docs`);
 
     const urlObj = {
       original_url: url,
-      short_url: count + 1,
+
+      // First short_url is 1 and then increments by 1
+      short_url: count ? count + 1 : 1,
     };
 
     // Create new item
     const newItem = new Item(urlObj);
 
     // Save the item
-    const savedItem = await newItem.save();
-    if (!savedItem) throw Error(`Failed to save new item`);
+    await newItem.save();
 
     // Send response
     return res.json(urlObj);
   } catch (e) {
-    return res.json({ msg: e.message });
+    return res.json({ error: e.message });
   }
 });
 
@@ -54,7 +54,7 @@ router.get('/:short_url', async (req, res) => {
     if (!item) throw Error(`No short URL found for the given input`);
 
     // Redirect to the original url
-    return res.redirect(item.original_url);
+    return res.redirect(302, item.original_url);
   } catch (e) {
     return res.json({ error: e.message });
   }
