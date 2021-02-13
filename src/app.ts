@@ -3,6 +3,7 @@ import cors from 'cors';
 import path from 'path';
 import mongoose from 'mongoose';
 import { MONGO_URI } from './config/secrets';
+import { errorHandler } from './middleware/error-handler';
 
 // Routes
 import shorturlRoute from './routes/shorturl';
@@ -34,8 +35,10 @@ app.get('/', (req, res) => {
 app.use('/api/shorturl', shorturlRoute);
 
 // 404: Not Found
-app.use((req, res) => {
+app.all('*', (req, res) => {
   res.status(404).sendFile(path.resolve('views/404.html'));
 });
+
+app.use(errorHandler);
 
 export default app;
