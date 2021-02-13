@@ -7,7 +7,7 @@
     "dev": "nodemon src/server.ts cross-env NODE_ENV=development",
     "start": "node dist/server.js cross-env NODE_ENV=prod ",
     "build": "tsc -p .",
-    "test": "jest --forceExit --watch --coverage --verbose"
+    "test": "jest --detectOpenHandles --forceExit --watch --coverage --verbose"
   },
   "author": "Maciek Sitkowski",
   "license": "MIT",
