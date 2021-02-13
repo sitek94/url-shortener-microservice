@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import { Item, ItemDocument } from '../models/item-model';
-import verifyUrl from '../middleware/verify-url';
+import { Item } from '../models/item-model';
+import { urlValidator } from '../middleware/url-validator';
 
 const router = Router();
 
-router.post('/new', verifyUrl, async (req, res) => {
+router.post('/new', urlValidator, async (req, res) => {
   try {
     const url = req.body.url.toLowerCase();
 
