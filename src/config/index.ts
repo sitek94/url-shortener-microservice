@@ -5,9 +5,11 @@ dotenv.config();
 
 const { NODE_ENV, MONGO_URI_DEV, MONGO_URI_PROD } = process.env;
 
-export const MONGO_URI = (NODE_ENV === 'production'
-  ? MONGO_URI_PROD
-  : MONGO_URI_DEV) as string;
+const isProduction = NODE_ENV === 'production';
+
+export const PORT = process.env.PORT || 5000;
+
+export const MONGO_URI = isProduction ? MONGO_URI_PROD : MONGO_URI_DEV;
 
 if (!MONGO_URI) {
   console.log(

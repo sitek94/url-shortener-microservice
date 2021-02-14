@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import mongoose from 'mongoose';
-import { MONGO_URI } from './config/secrets';
+import { MONGO_URI, PORT } from './config';
 import { errorHandler } from './middleware/error-handler';
 
 // Routes
@@ -11,7 +11,7 @@ import shorturlRoute from './routes/shorturl';
 const app = express();
 
 // Express configuration
-app.set('port', process.env.PORT || 5000);
+app.set('port', PORT || 5000);
 app.use(cors({ optionsSuccessStatus: 200 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

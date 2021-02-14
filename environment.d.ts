@@ -5,9 +5,10 @@ declare global {
       MONGO_URI_PROD: string;
       MONGO_URI_DEV: string;
       MONGO_URI_TEST: string;
-      PORT?: 'string';
+      HOSTNAME: string;
+      PORT?: string;
     }
   }
 }
 
-export {}
+export {};
