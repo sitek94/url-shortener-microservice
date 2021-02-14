@@ -22,7 +22,7 @@ This project is my solution for [APIs and Microservices Projects - URL Shortener
 Use your existing account or create a new one. If you don't know how to do that, you can
 follow [step by step tutorial by freeCodeCamp](https://www.freecodecamp.org/learn/apis-and-microservices/mongodb-and-mongoose/).
 
-Once you have connected to your cluster, use `.env.example` to create your `.env` file.
+Once you have connected to your cluster, use `.sample.env` to create your `.env` file.
 
 ```env
 MONGO_URI_PROD=mongodb+srv://<user>:<password>@<cluster#-dbname>.mongodb.net/test
