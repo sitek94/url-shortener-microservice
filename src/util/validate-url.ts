@@ -8,6 +8,10 @@ export async function validateUrl(url: any) {
 
     const { hostname } = new URL(url);
 
+    if (hostname === process.env.HOSTNAME || hostname === 'localhost') {
+      throw new Error();
+    }
+
     await dnsLookup(hostname);
   } catch {
     throw new Error('Invalid URL');
