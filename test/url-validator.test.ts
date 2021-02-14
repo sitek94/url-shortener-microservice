@@ -1,5 +1,10 @@
+import mongoose from 'mongoose';
 import request from 'supertest';
 import app from '../src/app';
+
+afterAll(() => {
+  mongoose.connection.db.dropDatabase();
+});
 
 describe('validateUrl', () => {
   it('catches invalid URL', async () => {
