@@ -25,9 +25,14 @@ follow [step by step tutorial by freeCodeCamp](https://www.freecodecamp.org/lear
 Once you have connected to your cluster, use `.sample.env` to create your `.env` file.
 
 ```env
+# MongoDB Production
 MONGO_URI_PROD=mongodb+srv://<user>:<password>@<cluster#-dbname>.mongodb.net/test
 
+# MongoDB Development
 MONGO_URI_DEV=mongodb://localhost:27017/<db_name>
+
+# Hostname
+HOSTNAME=<your-site-hostname>
 ```
 
 ### Install dependencies
