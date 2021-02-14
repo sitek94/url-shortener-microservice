@@ -11,7 +11,7 @@ describe('dnsLookup', () => {
     try {
       await dnsLookup('asdfdfasf');
     } catch (e) {
-      expect(e.code).toEqual('ENOTFOUND');
+      expect(e.message).toMatch(/dns lookup failed/i);
     }
   });
 });
